@@ -197,6 +197,7 @@ h2 {
 }
 
 .copy::after {
+  pointer-events: none;
   filter: opacity(0);
   text-align: center;
   font-family: var(--font-roboto);
@@ -213,6 +214,7 @@ h2 {
 }
 
 .copy::before {
+  pointer-events: none;
   filter: opacity(0);
   position: absolute;
   content: '';
