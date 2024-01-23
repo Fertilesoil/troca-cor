@@ -11,57 +11,54 @@ const copy = document.querySelector('.copy')
 
 // Trocar as respectivas cores
 btn.addEventListener('click', () => {
- let corAleatoria = geradorHex()
+  let corAleatoria = geradorHex()
 
- color.forEach(cor => cor.textContent = corAleatoria)
- conteudo.style.backgroundColor = corAleatoria
- preview.style.backgroundColor = storage.at(-2)
- rescue.value = storage.at(-2)
- contador++
+  color.forEach(cor => cor.textContent = corAleatoria)
+  conteudo.style.backgroundColor = corAleatoria
+  preview.style.backgroundColor = storage.at(-2)
+  rescue.value = storage.at(-2)
+  contador++
 })
 
 
 
 // Gerar Cor HEX
 function geradorHex() {
- let corHex = '#'
- let number
+  let corHex = '#'
+  let number
 
- for (let i = 0; i < 6; i++) {
-  number = contadorPosicao()
-  corHex += colors[number]
- }
+  for (let i = 0; i < 6; i++) {
+    number = contadorPosicao()
+    corHex += colors[number]
+  }
 
- storage.push(corHex)
- return corHex
+  storage.push(corHex)
+  return corHex
 }
 
 function contadorPosicao() {
- return Math.floor(Math.random() * colors.length)
+  return Math.floor(Math.random() * colors.length)
 }
 
 // Eventos Preview
 preview.addEventListener('mouseover', () => {
- if (contador >= 2)
-  preview.classList.toggle('hover')
+  if (contador >= 2)
+    preview.classList.toggle('hover')
 })
 
 preview.addEventListener('mouseout', () => {
- if (contador >= 2)
-  preview.classList.toggle('hover')
+  if (contador >= 2)
+    preview.classList.toggle('hover')
 })
 
 copy.addEventListener('click', () => {
- const rescue = document.querySelector('input')
+  const rescue = document.querySelector('input')
+  window?.navigator?.vibrate(70)
 
- navigator.clipboard.writeText(rescue.value).then(() => {
-  copy.classList.add('active')
-  setTimeout(() => {
-  copy.classList.remove('active')
-  },1500)
- })
+  navigator.clipboard.writeText(rescue.value).then(() => {
+    copy.classList.add('active')
+    setTimeout(() => {
+      copy.classList.remove('active')
+    }, 1500)
+  })
 })
-
-// copy.addEventListener('mouseout', () => { 
-//  copy.classList.remove('active')
-// })
