@@ -4,8 +4,6 @@ let keep = []
 let contador = 0
 let ownCounter = 0
 
-
-
 const btn = document.querySelector('button')
 const conteudo = document.querySelector('main')
 const color = [...document.querySelectorAll('.color')]
@@ -13,22 +11,19 @@ const preview = document.querySelector('.preview')
 const rescue = document.querySelector('.back-color')
 const copy = document.querySelector('.copy')
 
-
 // Trocar as respectivas cores
 btn.addEventListener('click', () => {
   let corAleatoria = geradorHex()
   let corAnterior = keep.at(-2)
-  console.log(corAnterior);
-  console.table(keep);
-  
 
   color.forEach(cor => cor.textContent = corAleatoria.cor)
   conteudo.style.backgroundColor = corAleatoria.cor
 
-  preview.style.backgroundColor = corAnterior == undefined ? corAleatoria : corAnterior.cor 
+  preview.style.backgroundColor = corAnterior == undefined ? corAleatoria : corAnterior.cor
+  conteudo.style.transition = '0.5s ease'
   preview.style.outline = `5px solid ${corAnterior == undefined ? corAleatoria : corAnterior.cor}`
   preview.style.backgroundColor = corAnterior == undefined ? corAleatoria : corAnterior.cor 
-  rescue.value = corAnterior == undefined ? corAleatoria : corAnterior.cor 
+  rescue.value = corAnterior == undefined ? corAleatoria : corAnterior.cor
   contador++
 })
 
@@ -73,9 +68,6 @@ preview.addEventListener('mouseover', () => {
 })
 
 preview.addEventListener('mouseout', () => {
-
-  // preview.style.outline = `5px solid transparent`
-  // preview.style.transition = '200ms linear'
   if (contador >= 2)
     preview.classList.toggle('hover')
 })
