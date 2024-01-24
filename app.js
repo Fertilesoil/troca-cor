@@ -1,6 +1,10 @@
 const colors = [1, 2, 3, 4, 5, 6, 7, 8, 9, 'A', 'B', 'C', 'D', 'E', 'F']
 let storage = []
+let keep = []
 let contador = 0
+let ownCounter = 0
+
+
 
 const btn = document.querySelector('button')
 const conteudo = document.querySelector('main')
@@ -9,22 +13,36 @@ const preview = document.querySelector('.preview')
 const rescue = document.querySelector('.back-color')
 const copy = document.querySelector('.copy')
 
+
 // Trocar as respectivas cores
 btn.addEventListener('click', () => {
   let corAleatoria = geradorHex()
+  let corAnterior = keep.at(-2)
+  console.log(corAnterior);
+  console.table(keep);
+  
 
-  let corAnterior = preview.style.backgroundColor = storage.at(-2)
-  preview.style.outline = `5px solid ${corAnterior}`
+  color.forEach(cor => cor.textContent = corAleatoria.cor)
+  conteudo.style.backgroundColor = corAleatoria.cor
 
-  color.forEach(cor => cor.textContent = corAleatoria)
-  conteudo.style.backgroundColor = corAleatoria
-  preview.style.backgroundColor = storage.at(-2)
-  rescue.value = storage.at(-2)
+  preview.style.backgroundColor = corAnterior == undefined ? corAleatoria : corAnterior.cor 
+  preview.style.outline = `5px solid ${corAnterior == undefined ? corAleatoria : corAnterior.cor}`
+  preview.style.backgroundColor = corAnterior == undefined ? corAleatoria : corAnterior.cor 
+  rescue.value = corAnterior == undefined ? corAleatoria : corAnterior.cor 
   contador++
 })
 
+// Função construtora do objeto cor para armazenar no array
+function criaCor(id, cor) {
+  return {
+    id,
+    cor,
+  }
+}
+
 // Gerar Cor HEX
 function geradorHex() {
+  let cor
   let corHex = '#'
   let number
 
@@ -33,8 +51,11 @@ function geradorHex() {
     corHex += colors[number]
   }
 
-  storage.push(corHex)
-  return corHex
+  ownCounter++
+  cor = criaCor(ownCounter, corHex)
+  keep.push(cor)
+  storage.push(cor)
+  return cor
 }
 
 function contadorPosicao() {
@@ -52,7 +73,7 @@ preview.addEventListener('mouseover', () => {
 })
 
 preview.addEventListener('mouseout', () => {
-  
+
   // preview.style.outline = `5px solid transparent`
   // preview.style.transition = '200ms linear'
   if (contador >= 2)
