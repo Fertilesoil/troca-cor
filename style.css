@@ -131,10 +131,12 @@ h2 {
 }
 
 .hover {
-  transition: 0.2s linear;
+  transition: 0.1s linear;
   border: var(--brd-hover);
-  filter: opacity(0.6);
+  filter: opacity(0.8);
 }
+
+/* ridge */
 
 .hover:hover > .back-color{
   transition: 0.2s linear;

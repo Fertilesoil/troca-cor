@@ -20,8 +20,6 @@ btn.addEventListener('click', () => {
   contador++
 })
 
-
-
 // Gerar Cor HEX
 function geradorHex() {
   let corHex = '#'
@@ -42,11 +40,17 @@ function contadorPosicao() {
 
 // Eventos Preview
 preview.addEventListener('mouseover', () => {
+  let corAnterior = preview.style.backgroundColor = storage.at(-2)
+  preview.style.outline = `5px solid ${corAnterior}`
+  preview.style.transition = '200ms linear'
+
   if (contador >= 2)
     preview.classList.toggle('hover')
 })
 
 preview.addEventListener('mouseout', () => {
+  preview.style.outline = `5px solid transparent`
+  preview.style.transition = '200ms linear'
   if (contador >= 2)
     preview.classList.toggle('hover')
 })
