@@ -13,6 +13,9 @@ const copy = document.querySelector('.copy')
 btn.addEventListener('click', () => {
   let corAleatoria = geradorHex()
 
+  let corAnterior = preview.style.backgroundColor = storage.at(-2)
+  preview.style.outline = `5px solid ${corAnterior}`
+
   color.forEach(cor => cor.textContent = corAleatoria)
   conteudo.style.backgroundColor = corAleatoria
   preview.style.backgroundColor = storage.at(-2)
@@ -49,8 +52,9 @@ preview.addEventListener('mouseover', () => {
 })
 
 preview.addEventListener('mouseout', () => {
-  preview.style.outline = `5px solid transparent`
-  preview.style.transition = '200ms linear'
+  
+  // preview.style.outline = `5px solid transparent`
+  // preview.style.transition = '200ms linear'
   if (contador >= 2)
     preview.classList.toggle('hover')
 })
