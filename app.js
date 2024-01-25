@@ -1,28 +1,35 @@
 const colors = [1, 2, 3, 4, 5, 6, 7, 8, 9, 'A', 'B', 'C', 'D', 'E', 'F']
 let storage = []
 let keep = []
+let divs = []
 let contador = 0
 let ownCounter = 0
 
 const btn = document.querySelector('button')
-const conteudo = document.querySelector('main')
+const conteudo = document.querySelector('body')
 const color = [...document.querySelectorAll('.color')]
 const preview = document.querySelector('.preview')
 const rescue = document.querySelector('.back-color')
 const copy = document.querySelector('.copy')
+const old = document.querySelector('.old')
 
 // Trocar as respectivas cores
 btn.addEventListener('click', () => {
   let corAleatoria = geradorHex()
   let corAnterior = keep.at(-2)
 
+  if (corAnterior !== undefined) {
+    criaDiv(corAnterior == undefined ? corAleatoria : corAnterior.cor, corAleatoria.cor)
+  }
+
   color.forEach(cor => cor.textContent = corAleatoria.cor)
   conteudo.style.backgroundColor = corAleatoria.cor
+  old.style.backgroundColor = corAnterior == undefined ? corAleatoria : corAnterior.cor
 
   preview.style.backgroundColor = corAnterior == undefined ? corAleatoria : corAnterior.cor
   conteudo.style.transition = '0.5s ease'
   preview.style.outline = `5px solid ${corAnterior == undefined ? corAleatoria : corAnterior.cor}`
-  preview.style.backgroundColor = corAnterior == undefined ? corAleatoria : corAnterior.cor 
+  preview.style.backgroundColor = corAnterior == undefined ? corAleatoria : corAnterior.cor
   rescue.value = corAnterior == undefined ? corAleatoria : corAnterior.cor
   contador++
 })
@@ -83,3 +90,24 @@ copy.addEventListener('click', () => {
     }, 1500)
   })
 })
+
+function criaDiv(cor, texto) {
+  const container = document.querySelector('.old')
+  let div = document.createElement('div')
+  div.classList.add('card')
+  div.style.backgroundColor = cor
+  div.textContent = texto
+  container.prepend(div)
+}
+
+// function criaDiv(cor) {
+//   const conteudo = document.querySelector('.old')
+//   let div = document.createElement('div')
+//   div.style.backgroundColor = cor
+//   div.style.width = "8rem";
+//   div.style.height = "2.5rem";
+//   div.style.borderRadius = '0.4rem'
+//   divs.push(div)
+//   conteudo.appendChild(div)
+//   conteudo.style.transition = '1s ease'
+// }

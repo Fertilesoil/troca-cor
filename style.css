@@ -5,7 +5,7 @@
   --font-andika: 'Andika', sans-serif;
   --font-roboto: 'Roboto', sans-serif;
   --brd-rd: 0.5rem;
-  --strange-shape: 61% 39% 49% 51% / 31% 60% 40% 69%; 
+  --strange-shape: 61% 39% 49% 51% / 31% 60% 40% 69%;
   --transition: 0.3s linear;
   --brd-hover: rgba(255, 255, 255, 0.300) 3px dotted;
 }
@@ -19,7 +19,7 @@
   box-sizing: border-box;
 }
 
-h3{
+h3 {
   color: teal;
   font-size: 1.4rem;
 }
@@ -61,8 +61,9 @@ a:hover {
 }
 
 main {
-  height: calc(100vh - 3.65rem);
+  min-height: calc(100vh - 3.65rem);
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
@@ -96,6 +97,7 @@ h2 {
   justify-content: center;
   align-items: center;
   gap: 4rem;
+  margin-top: 7rem;
 }
 
 .switch {
@@ -126,7 +128,7 @@ h2 {
   border: transparent;
   width: 12rem;
   height: 10rem;
-  border-radius:var(--strange-shape);
+  border-radius: var(--strange-shape);
   box-shadow: 12px 12px 10px rgba(0, 0, 0, 0.4);
   transition: 0.2s linear;
   position: relative;
@@ -140,12 +142,12 @@ h2 {
 
 /* ridge */
 
-.hover:hover > .back-color{
+.hover:hover>.back-color {
   transition: 0.2s linear;
   display: flex;
 }
 
-.hover:hover > .copy {
+.hover:hover>.copy {
   transition: 0.2s linear;
   display: flex;
 }
@@ -232,7 +234,40 @@ h2 {
 }
 
 .active.copy::after,
-.active.copy::before{
+.active.copy::before {
   filter: opacity(1);
   transition: var(--transition);
 }
+
+.old {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  min-height: 100vh;
+  padding: 100px 300px;
+  margin-top: 7.3rem;
+  min-width: 98.9vw;
+}
+
+.card {
+  width: 8rem;
+  height: 2.5rem;
+  border-radius: 0.4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: transparent;
+  transition: 0.7s ease;
+}
+
+.card:hover {
+  color: #160e85;
+  transform: scale(1.2);
+  height: 5rem;
+  margin: 12px 12px;
+  transition: 0.7s ease;
+}
+
