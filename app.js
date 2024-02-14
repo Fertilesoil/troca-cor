@@ -18,13 +18,8 @@ btn.addEventListener('click', () => {
   let corAleatoria = geradorHex()
   let corAnterior = keep.at(-2)
 
-  if (corAnterior !== undefined) {
-    criaDiv(corAnterior == undefined ? corAleatoria : corAnterior.cor, corAleatoria.cor)
-  }
-
   color.forEach(cor => cor.textContent = corAleatoria.cor)
   conteudo.style.backgroundColor = corAleatoria.cor
-  old.style.backgroundColor = corAnterior == undefined ? corAleatoria : corAnterior.cor
 
   preview.style.backgroundColor = corAnterior == undefined ? corAleatoria : corAnterior.cor
   conteudo.style.transition = '0.5s ease'
@@ -57,6 +52,7 @@ function geradorHex() {
   cor = criaCor(ownCounter, corHex)
   keep.push(cor)
   storage.push(cor)
+  sessionStorage.setItem('colors', JSON.stringify(keep));
   return cor
 }
 
@@ -90,24 +86,3 @@ copy.addEventListener('click', () => {
     }, 1500)
   })
 })
-
-function criaDiv(cor, texto) {
-  const container = document.querySelector('.old')
-  let div = document.createElement('div')
-  div.classList.add('card')
-  div.style.backgroundColor = cor
-  div.textContent = texto
-  container.prepend(div)
-}
-
-// function criaDiv(cor) {
-//   const conteudo = document.querySelector('.old')
-//   let div = document.createElement('div')
-//   div.style.backgroundColor = cor
-//   div.style.width = "8rem";
-//   div.style.height = "2.5rem";
-//   div.style.borderRadius = '0.4rem'
-//   divs.push(div)
-//   conteudo.appendChild(div)
-//   conteudo.style.transition = '1s ease'
-// }

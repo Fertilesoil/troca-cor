@@ -44,6 +44,11 @@ nav {
   align-items: center;
 }
 
+.nav-flex ul {
+  display: flex;
+  gap: 1rem;
+}
+
 .nav-flex li {
   list-style: none;
 }
@@ -239,35 +244,25 @@ h2 {
   transition: var(--transition);
 }
 
-.old {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 0.7rem;
-  min-height: 100vh;
-  padding: 100px 300px;
-  margin-top: 7.3rem;
-  min-width: 98.9vw;
-}
+@media screen and (width < 768px) {
+  .nav-flex a {
+    font-size: 1.1rem;
+  }
 
-.card {
-  width: 8rem;
-  height: 2.5rem;
-  border-radius: 0.4rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: transparent;
-  transition: 0.7s ease;
-}
+  h3 {
+    font-size: 1.1rem;
+  }
 
-.card:hover {
-  color: #160e85;
-  transform: scale(1.2);
-  height: 5rem;
-  margin: 12px 12px;
-  transition: 0.7s ease;
-}
+  nav {
+    padding: 0;
+  }
 
+  h2 {
+    padding: 1rem;
+    font-size: 2.1rem;
+  }
+
+  .conteudo {
+    margin-top: 2rem;
+  }
+}

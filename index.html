@@ -1,13 +1,16 @@
 <!doctype html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
   <meta charset="UTF-8" />
   <link rel="icon" href="/interruptor.png" />
   <link rel="stylesheet" href="style.css">
   <script src="https://kit.fontawesome.com/a18b0a6dd3.js" crossorigin="anonymous"></script>
+  <meta http-equiv="X-UA-Compatible" content="IE=7">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="description" content="Aplicativo feito para gerar cores HEX e visualizá-las.">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Troca Cor</title>
+  <title>Home || Troca Cor</title>
 </head>
 
 <body>
@@ -15,7 +18,8 @@
     <div class="nav-flex">
       <h3>Troca Cor</h3>
       <ul>
-        <li><a href="index.html">Hex</a></li>
+        <li><a href="./index.html">Hex</a></li>
+        <li><a href="./cores/cores.html">Cores</a></li>
       </ul>
     </div>
   </nav>
@@ -29,12 +33,12 @@
         <button class="copy"><i class="fa-regular fa-clone"></i></button>
       </div>
     </div>
-    <div class="old">
-        <div class="card" id="old-color">
-          <span class="titulo-cor"></span>
-        </div>
-    </div>
   </main>
+  <div class="old">
+    <div class="card" id="old-color">
+      <span class="titulo-cor"></span>
+    </div>
+  </div>
 
   <script type="module" src="app.js"></script>
 </body>
